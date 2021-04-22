@@ -1,0 +1,135 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <div>
+        <img src="../assets/icon/home.png" alt="logo-image" style="width: 40px;">
+        <label>Con</label>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end" (click)="EditButtonClicked()">
+        <ion-icon style="padding-right: 10px;width: 30px;height: 30px;" slot="icon-only" md="create-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title style="font-size: 17px;font-weight: bold;">
+        Slide to Control Speed
+      </ion-card-title>
+      <ion-grid>
+        <ion-row>
+          <br><br><br><br>
+        </ion-row>
+        <ion-row offset="6">
+          <ion-col style="text-align: center;">
+            <div class="fan">
+              <div class="head">
+                <div class="fan__engine"> <span class="center"></span> </div> <input type="checkbox" hidden
+                  [(ngModel)]="switch1" id="engine" checked />
+                <div>
+                  <div class="fan__blades"> <input type="checkbox" id="engine2" hidden [(ngModel)]="switch2" checked />
+                    <div class="fan__blades">
+                      <div class="center"></div>
+                      <div class="blade"><span></span></div>
+                      <div class="blade"><span></span></div>
+                      <div class="blade"><span></span></div>
+                      <div class="blade"><span></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <br>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-range [(ngModel)]="Device.rangevalue" min="1" max="3" step="1" snaps="true" pin="true"
+              (ionChange)="SpeedChanged()">
+
+              <ion-icon size="small" slot="start" name="speedometer-outline"></ion-icon>
+              <ion-icon slot="end" name="speedometer-outline"></ion-icon>
+
+            </ion-range>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title style="font-size: 17px;font-weight: bold;">
+
+        <ion-row>
+          <ion-col>
+            Water Pump Control
+          </ion-col>
+          <ion-col style="text-align: right;">
+            <label class="switch">
+              <input type="checkbox" [disabled]="Device.WaterLevel=='0'" [(ngModel)]="Device.iswateron"
+                (click)="WaterPumpClicked()">
+              <div class="slider round"></div>
+            </label>
+          </ion-col>
+        </ion-row>
+      </ion-card-title>
+      <ion-grid>
+        <ion-row>
+          <br>
+        </ion-row>
+        <ion-row [hidden]="Device.WaterLevel=='NA'">
+          <ion-col>
+            <div class="tk" #tk>
+              <h3 class="text" #text></h3>
+              <div class="lq" #lq>
+                <div class="ring" #ring></div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-item>
+          <ion-label>Mode</ion-label>
+          <ion-select value="Manual" [disabled]="!Device.iswateron" [(ngModel)]="Device.WaterPumpMode"
+            (ionChange)="WaterPumpModeChanged()">
+            <ion-select-option value="Manual">Manual</ion-select-option>
+            <ion-select-option value="Automatic">Automatic</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title style="font-size: 17px;font-weight: bold;">
+        Swing Control
+      </ion-card-title>
+      <ion-grid>
+        <ion-row>
+          <br>
+        </ion-row>
+        <ion-row>
+          <ion-col style="text-align: center;">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="Device.isswingon" (click)="SwingClicked()">
+              <div class="slider round"></div>
+            </label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

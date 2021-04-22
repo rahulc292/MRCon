@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        <div>
+          <img src="../assets/icon/home.png" alt="logo-image" style="width: 40px;">
+          <label>Con</label>
+        </div>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <ion-card style="height:97%">
+        <ion-card-content>
+          <ion-card-title style="font-size: 17px;font-weight: bold;text-align: center;">
+            <br>
+              Begin your Device setup<br><br>
+              <p>Let's get started. Choose how would you like to connect your device.</p>       
+          </ion-card-title>
+          <br><br>
+          <ion-grid>
+            <ion-row>
+              <br>
+            </ion-row>
+            <ion-row size="2">
+              <ion-col size="4" offset="4"><a [routerLink]="['/category']">
+                  <img src="../assets/icon/router.gif" alt="logo-image"></a>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="IsLoggedIn">
+                <ion-col>
+                  <ion-button expand="full" style="bottom: 75px;position: fixed;right: 20px;left: 20px;" color="primary" (click)="RouterConnectButtonClicked()">I have a Wi-Fi router</ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-button expand="full" style="bottom: 25px;position: fixed;right: 20px;left: 20px;" color="secondary" (click)="DirectConnectButtonClicked()">Connect Directly with my Mobile</ion-button>
+                </ion-col>
+              </ion-row>
+          </ion-grid>
+          </ion-card-content>
+    </ion-card>
+</ion-content>

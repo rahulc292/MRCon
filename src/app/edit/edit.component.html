@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="cooler"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <div>
+                <img src="../assets/icon/home.png" alt="logo-image" style="width: 40px;">
+                <label>Con</label>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card style="height: 97%;overflow-y: scroll;">
+        <ion-card-content>
+            <ion-row>
+                <ion-col>
+                    <div style="text-align: center;padding-top: 30px;padding-bottom: 10px;"><img
+                            src="../assets/icon/lg.png" style="width: 60px;">
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <div style="text-align: center;">
+                        {{UserEmail}}
+                    </div>
+                </ion-col>
+            </ion-row>
+            <br>
+            <ion-item lines="full">
+                <ion-label position="floating">Device Name</ion-label>
+                <ion-input type="text" name="DeviceName" [(ngModel)]="DeviceName" required></ion-input>
+            </ion-item><br>
+            <div style="text-align: center;">
+                <ion-button (click)="UpdateButtonClicked()" color="primary">Update</ion-button><br><br><br><br><br><br>
+                <ion-button color="danger" (click)="DeleteButtonClicked()">Delete Device</ion-button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

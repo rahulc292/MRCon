@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            <div>
+                <img src="../assets/icon/home.png" alt="logo-image" style="width: 40px;">
+                <label>Con</label>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card style="height:97%">
+        <ion-card-content>
+            <div style="text-align: center;padding-top: 50px;padding-bottom: 50px;"><img src="../assets/icon/lg.png"
+                    style="width: 80px;">
+            </div>
+            <form #form="ngForm">
+                <ion-item lines="full">
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input #txtEmail type="email"
+                        pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+                        name="Email" [(ngModel)]="Email" required></ion-input>
+                </ion-item>
+                <ion-item lines="full" *ngIf="IsPasswordTextBoxVisible">
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input type="password" minlength="6" name="Password" #txtPassword [(ngModel)]="Password"
+                        required></ion-input>
+                </ion-item>
+                <ion-row>
+                    <ion-col><br>
+                        <div *ngIf="IsForgotPasswordVisible" style="text-align: right;">
+                            <a class="small-text" (click)="ForgotPasswordClicked()">Forgot Password?</a></div><br>
+                        <ion-button expand="block" (click)="ProceedClicked()" *ngIf="IsProceedButtonVisible"
+                            color="primary">Proceed</ion-button>
+                        <ion-button color="danger" expand="block" (click)="SignInClicked()"
+                            *ngIf="IsSignInButtonVisible">Sign In</ion-button><br>
+                        <ion-button (click)="RegisterClicked()" expand="block" *ngIf="IsRegisterButtonVisible"
+                            color="primary">Register</ion-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <div style="text-align: center;">
+                        <a (click)="ContinueWithoutLoginClicked()">Continue without login >></a>
+                    </div>
+                    </ion-col>
+                </ion-row>
+
+            </form>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

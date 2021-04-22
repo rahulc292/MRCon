@@ -1,0 +1,7 @@
+{
+  "name": "iSmartDevice",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

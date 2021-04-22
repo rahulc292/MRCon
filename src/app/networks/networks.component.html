@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="category"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <div>
+                <img src="../assets/icon/home.png" alt="logo-image" style="width: 40px;">
+                <label>Con</label>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <ion-card style="height: 97%;">
+        <ion-card-content style="height: 85%;overflow-y: scroll;">
+            <ion-card-title *ngIf="Networklist.length==0">
+                <ion-grid>
+                    <ion-row>
+                        <br><br>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col style="text-align:center;font-size: 17px;font-weight: bold;">
+                            Looking for Wifi
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-title>
+            <ion-row *ngIf="Networklist.length==0">
+                <ion-col>
+                    <div class="loader">Loading...</div>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="Networklist.length>0">
+                <ion-col>
+                    <div>
+                        <ion-item *ngFor="let item of Networklist" button (click)="SSIDClicked(item)">
+                            <ion-avatar slot="start">
+                                <img src="../assets/icon/{{item.icon}}" style="height: 30px;margin-top: 8px;">
+                            </ion-avatar>
+                            <ion-label style="font-weight: bold;">
+                                {{item.Name}}
+                            </ion-label>
+                        </ion-item>
+                    </div>
+                </ion-col>
+            </ion-row>   
+        </ion-card-content>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="full" style="bottom: 20px;position: fixed;right: 20px;left: 20px;"
+                    color="primary" (click)="ScanClicked()">Scan Again</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+</ion-content>
